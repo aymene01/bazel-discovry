@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "app2_lib",
+    srcs = ["main.go"],
+    importpath = "genaigateway/apps/app2",
+    visibility = ["//visibility:private"],
+    deps = ["//packages/logger"],
+)
+
+go_binary(
+    name = "app2",
+    embed = [":app2_lib"],
+    visibility = ["//visibility:public"],
+)

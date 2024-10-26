@@ -1,0 +1,44 @@
+load("@bazel_gazelle//:def.bzl", "gazelle")
+
+# gazelle:prefix genaigateway
+gazelle(name = "gazelle")
+
+gazelle(
+    name = "repo-app1",
+    args = [
+        "-from_file=apps/app1/go.mod",
+        "-to_macro=deps.bzl%go_dependencies",
+        "-prune",
+    ],
+    command = "update-repos",
+)
+
+gazelle(
+    name = "repo-app2",
+    args = [
+        "-from_file=apps/app2/go.mod",
+        "-to_macro=deps.bzl%go_dependencies",
+        "-prune",
+    ],
+    command = "update-repos",
+)
+
+gazelle(
+    name = "repo-logger",
+    args = [
+        "-from_file=packages/logger/go.mod",
+        "-to_macro=deps.bzl%go_dependencies",
+        "-prune",
+    ],
+    command = "update-repos",
+)
+
+gazelle(
+    name = "repo-nodejs",
+    args = [
+        "-from_file=apps/nodejs-app/package.json",
+        "-to_macro=deps.bzl%nodejs_dependencies",
+        "-prune",
+    ],
+    command = "update-repos",
+)

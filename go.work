@@ -1,0 +1,7 @@
+go 1.21
+
+use (
+	./apps/app1
+	./apps/app2
+	./packages/logger
+)
